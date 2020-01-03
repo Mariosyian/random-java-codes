@@ -8,8 +8,6 @@
  */
 package mario.random.find;
 
-import java.lang.reflect.Array;
-
 public class GreaterThanAllAtRight {
 	public static void main(String[] args){
 		int[] nums = new int[args.length];
