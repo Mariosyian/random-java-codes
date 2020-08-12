@@ -1,31 +1,26 @@
-package mario.random.snippets;
 /** 
- * @author marios yiannakou.
+ * @author marios yiannakou
  * 
  * Given a sequence of numbers from 1 to n, in ascending order,
  * one number in the sequence is missing and is replaced by a duplicate.
  * Assume sorted array!
- * Find the FIRST missing number and the FIRST duplicate pair.
+ * Find the first missing number and the first duplicate pair.
  */
 public class FindMe  {
 
   public static void main(String[] args) {
-    
-  // Ensure arguments have been given
-  if (args.length == 0) {
-    System.out.println("No arguments have been passed!");
-    System.exit(-1);
-  } else if (args.length == 1) {
-    System.out.println("Please provide a sequence of numbers, not just one.");
-    System.exit(-1);
-  }
-  
-    // Create new array based on number of inputs
+    if (args.length == 0) {
+      System.out.println("No arguments have been passed!");
+      System.exit(-1);
+    } else if (args.length == 1) {
+      System.out.println("Please provide a sequence of numbers, not just one.");
+      System.exit(-1);
+    }
+
     int[] myArray = new int[args.length];
-    
-    // Fill array with standard input
-    for (int i = 0; i < args.length; i ++)
+    for (int i = 0; i < args.length; i ++) {
       myArray[i] = Integer.parseInt(args[i]);
+    }
     
     findMe(myArray);
   }
@@ -39,14 +34,10 @@ public class FindMe  {
    * @param myArray
    */
   public static void findMe(int[] myArray) {
-
-    // Initialised to 0 since given that least possible num is 1.
+    // Initialised to 0 since given smallest possible num is 1.
     int x = 0;
     boolean found = false;
-    
-    // Check if the current elements are going  up by 1 else missing num found.
-    //  4 --> 5 = +1
-    //  4 --> 6 = +2 so num 5 missing
+
     for (int i = 0; i < myArray.length; i ++) {
       if (x + 1 != myArray[i] && !found) {
         System.out.println("Missing number: " + (x + 1));
@@ -57,14 +48,12 @@ public class FindMe  {
         x ++;
       }
     }
-      
-    // Search array for duplicate value
+    
     for (int i = 0; i < myArray.length; i ++) {
       if (myArray[i] == myArray[i]) {
         System.out.println("Duplicate number: " + myArray[i]);
         break;
-      }// if
+      }
     }
-    
   }
 }

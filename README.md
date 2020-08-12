@@ -1,2 +1,2 @@
 # random-java-codes
-Random tiny challenges found online.
+Random coding challenges found online.

@@ -1,19 +1,16 @@
 /**
- * @author marios yiannakou.
+ * @author marios yiannakou
  * 
  * Given a number, a linear starting point and a quadratic starting point,
  * calculate how many iterations it takes for the quadratic number
  * to become larger than the linear number.
+ * 
+ * Exit Codes:
+ * -1 - Erroneous input
+ * -2 - Wrong number of arguments
  */
-package mario.random.snippets;
-
 public class QuadrOvertakeLinear {
 
-  /**
-   * Exit Codes
-   * -2: Incorrect number of arguments
-   * -1: Fatal exception
-   */
   public static void main(String[] args) {
 
     if (args.length != 3) {
@@ -21,18 +18,22 @@ public class QuadrOvertakeLinear {
       System.exit(-2);
     }
     
-    int num, LINEAR, QUADRATIC;
-    num = LINEAR = QUADRATIC = 0;
+    int num = 0;
+    int LINEAR = 0;
+    int QUADRATIC = 0;
     
     try {
       num = Integer.parseInt(args[0]);
       LINEAR = Integer.parseInt(args[1]);
       QUADRATIC = Integer.parseInt(args[2]);      
     } catch (Exception e) {
-      System.err.println("Fatal exception caught: " + e.getMessage());
+      System.err.println("FATAL ERROR: " + e.getMessage());
+      System.exit(-1);
     }
     
-    int q,l,counter = 0;
+    int q = 0;
+    int l = 0;
+    int counter = 0;
     
     while(true) {
       l = LINEAR * num;

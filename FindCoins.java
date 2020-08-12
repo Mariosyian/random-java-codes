@@ -1,6 +1,5 @@
-package mario.random.snippets;
 /**
- * @author marios yiannakou.
+ * @author marios yiannakou
  * 
  * Program takes exactly one argument as an integer which is treated as the
  * total amount of money the user is trying to resolve the minimum amount
@@ -10,17 +9,12 @@ package mario.random.snippets;
 public class FindCoins {
   
   public static void main(String[] args) {
+    if (args.length != 1) {
+      System.out.println("Please enter the total amount of coins to calculate.");
+      System.exit(-1);
+    }
   
-  // Ensure user has provided an argument
-  if (args.length != 1) {
-    System.out.println("Please enter the total amount of coins to calculate.");
-    System.exit(-1);
-  }
-  
-    //Save the argument passed as an Integer, catch any exceptions.
     int totalAmount = 0;
-    
-    // Try to parse the String argument as an Integer type
     try {
       totalAmount = Integer.parseInt(args[0]);
     } catch (Exception e) {
@@ -29,19 +23,14 @@ public class FindCoins {
       System.exit(-1);
     }
     
-    /*
-     * If a negative value has been supplied, turn it into positive and
-     * supply user with warning message.
-     */
     if (totalAmount < 0) {
       totalAmount *= -1;
-      System.out.println("You have supplied a negative number!");
-      System.out.println("Automatically converted to positive.");
+      System.out.println("Negative number detected! Converted to positive.");
     }
     
-    //Array of available coins
-    int[] coins = {200, 100, 50, 20, 10, 5, 2, 1};
-    int remainder;
+    // Available coins
+    int[] coins = { 200, 100, 50, 20, 10, 5, 2, 1 };
+    int remainder = 0;
     
     /*
      * Use each coin, starting from the largest value to calculate maximum

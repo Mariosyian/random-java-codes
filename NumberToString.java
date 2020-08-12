@@ -1,5 +1,3 @@
-package mario.random.snippets;
-
 /**
  * @author marios yiannakou
  * 
@@ -7,8 +5,11 @@ package mario.random.snippets;
  * e.g. 12345 = Twelve Thousand Three Hundred Forty Five
  * 
  * Range = 0 to 9billion
+ * 
+ * Exit Codes:
+ * -1 - Wrong number of arguments
+ * -2 - Erroneous input
  */
-
 public class NumberToString {
 
   private static String NUM = null;
@@ -16,13 +17,28 @@ public class NumberToString {
   private static String[] S = null;
 
   public static void main(String[] args) {
-    
-    // Nine billion One Hundred Twenty-Five Million Six Hundred Three Thousand Two hundred Four
-    NUM = "9125603204";
+    if (args.length != 1) {
+      System.out.println("Please enter the number to convert.");
+      System.exit(-1);
+    }
+
+    try {
+      int n = Integer.parseInt(args[0]);
+      if (n < 0 || n > (9 * Math.pow(10, 9))) {
+        System.out.println("Please provide a number between 0 and 9 Billion.");
+        System.exit(-2);
+      }
+    } catch (Exception e) {
+      System.err.println("FATAL ERROR: " + e.getMessage());
+      System.exit(-2);
+    }
+    NUM = args[0];
+
+    // Eight Billion One Hundred Twenty-Five Million Six Hundred Three Thousand Two hundred Ten
+    NUM = "8125603210";
     S = NUM.split("");
     
     for (INDEX = 0; INDEX < NUM.length(); INDEX ++) {
-      // TODO: Handle zero
       System.out.print(getPositionPostfixAsString(S[INDEX], NUM.length() - INDEX) + " ");
     }
   }
@@ -44,7 +60,7 @@ public class NumberToString {
       case "7": return "Seven";
       case "8": return "Eight";
       case "9": return "Nine";
-      default: System.exit(1);
+      default: System.exit(-2);
     }
     
     return null;
@@ -60,7 +76,7 @@ public class NumberToString {
   private static String getPositionPostfixAsString(String d, int p) {
     String s = getBaseNumberAsString(d);
     switch (p) {
-      case 1: return "";
+      case 1: break;
       case 2: return getTens();
       case 3: s = s.concat(" Hundred"); break;
       case 4: s = s.concat(" Thousand"); break;
@@ -70,7 +86,7 @@ public class NumberToString {
       case 8: return getMillions();
       case 9: s = s.concat(" Hundred ").concat(getMillions()).concat(" Million"); break;
       case 10: s = s.concat(" Billion"); break;
-      default: System.exit(1);
+      default: System.exit(-2);
     }
     
     return s;
@@ -89,7 +105,7 @@ public class NumberToString {
       case "7": s = "Seventy-" + getBaseNumberAsString(S[NUM.length() - 1]); break;
       case "8": s = "Eighty-" + getBaseNumberAsString(S[NUM.length() - 1]); break;
       case "9": s = "Ninety-" + getBaseNumberAsString(S[NUM.length() - 1]); break;
-      default: System.exit(1);
+      default: System.exit(-2);
     }
 
     INDEX += 2;
@@ -109,7 +125,7 @@ public class NumberToString {
       case "7": s = "Seventy-" + getBaseNumberAsString(S[NUM.length() - 4]); break;
       case "8": s = "Eighty-" + getBaseNumberAsString(S[NUM.length() - 4]); break;
       case "9": s = "Ninety-" + getBaseNumberAsString(S[NUM.length() - 4]); break;
-      default: System.exit(1);
+      default: System.exit(-2);
     }
 
     INDEX += 2;
@@ -129,7 +145,7 @@ public class NumberToString {
       case "7": s = "Seventy-" + getBaseNumberAsString(S[NUM.length() - 7]); break;
       case "8": s = "Eighty-" + getBaseNumberAsString(S[NUM.length() - 7]); break;
       case "9": s = "Ninety-" + getBaseNumberAsString(S[NUM.length() - 7]); break;
-      default: System.exit(1);
+      default: System.exit(-2);
     }
 
     INDEX += 2;
@@ -148,7 +164,7 @@ public class NumberToString {
       case "7": return "Seventeen";
       case "8": return "Eighteen";
       case "9": return "Nineteen";
-      default: System.exit(1);
+      default: System.exit(-2);
     }
 
     return null;
