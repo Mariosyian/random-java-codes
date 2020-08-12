@@ -3,7 +3,7 @@
  * 
  * Exit Codes:
  * -1 - Error
- * -1 - User has entered a negative number or erroneous input
+ * -2 - User has entered a negative number or erroneous input
  */
 import java.util.LinkedList;
 
