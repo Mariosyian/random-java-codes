@@ -1,4 +1,4 @@
-package mario.random.find;
+package mario.random.snippets;
 /**
  * @author marios yiannakou.
  * 

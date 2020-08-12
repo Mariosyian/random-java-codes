@@ -5,7 +5,7 @@
  * calculate how many iterations it takes for the quadratic number
  * to become larger than the linear number.
  */
-package mario.random.find;
+package mario.random.snippets;
 
 public class QuadrOvertakeLinear {
 

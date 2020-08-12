@@ -7,7 +7,7 @@
  * 0 - Success
  * 1 - User has entered a negative number or erroneous input
  */
-package mario.random.find;
+package mario.random.snippets;
 
 import java.util.LinkedList;
 
